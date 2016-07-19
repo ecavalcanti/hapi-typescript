@@ -1,0 +1,23 @@
+{
+  "name": "hapi-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecavalcanti/hapi-typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ecavalcanti/hapi-typescript/issues"
+  },
+  "homepage": "https://github.com/ecavalcanti/hapi-typescript#readme",
+  "dependencies": {
+    "hapi": "^13.5.0",
+    "joi": "^9.0.1"
+  }
+}
