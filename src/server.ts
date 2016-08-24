@@ -1,5 +1,5 @@
 import * as Hapi from "hapi";
-import Routes from "./routes";
+import Routes from "./libs/routes";
 import * as path from "path";
 import * as fs from "fs";
 import { IPlugin } from "./libs/plugins/interfaces";

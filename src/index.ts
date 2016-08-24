@@ -1,4 +1,4 @@
-/// <reference path="../typings.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 import Server from "./server";
 
 console.log(`Running enviroment ${process.env.NODE_ENV || "dev"}`);
