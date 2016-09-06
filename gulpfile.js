@@ -2,9 +2,9 @@
 
 const gulp = require('gulp'),
       tsc = require('gulp-typescript'),
-      clean = require('gulp-clean'),
       sourcemaps = require('gulp-sourcemaps'),
       nodemon = require('gulp-nodemon'),
+      livereload = require('gulp-livereload'),
       tsProject = tsc.createProject('tsconfig.json'),
       sourceFiles = 'src/**/*.ts',
       testFiles = 'test/**/*.ts',
@@ -12,17 +12,17 @@ const gulp = require('gulp'),
       entryPoint = './build/index.js';
 
 /**
- * Remove build directory.
+ * Copy config.json
  */
-gulp.task('clean', () => {
-    return gulp.src(outDir, { read: false })
-        .pipe(clean({force: true}));
+gulp.task('copy', () => {
+   return gulp.src(['./config.json'])
+    .pipe(gulp.dest(outDir));
 });
 
 /**
  * Compile TypeScript sources and create sourcemaps in build directory.
  */
-gulp.task('compile', ['clean'], () => {
+gulp.task('compile', ['copy'], () => {
     let tsResult = gulp.src([sourceFiles, testFiles])
         .pipe(sourcemaps.init())
         .pipe(tsc(tsProject))
@@ -38,11 +38,17 @@ gulp.task('build', ['compile'], () => {
     console.log('Building the project ...')
 });
 
+/**
+ * Watch typescript changes
+ */
+gulp.task('watch', function() {
+  gulp.watch('./src/**/*.ts', ['build']);
+});
 
-gulp.task('nodemon', ['build'], () => {
+gulp.task('serve', ['build', 'watch'], function () {
     nodemon({
         script: entryPoint,
-        env: { 'NODE_ENV': 'development' },
-        tasks: ['build']
-    })
-})
+        env: { 'NODE_ENV': 'development' }
+    });
+
+});
