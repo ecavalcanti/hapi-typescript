@@ -16,5 +16,16 @@ export default function(server: Hapi.Server) {
         }
     });
 
+    server.route({
+        method:'GET',
+        path:'/user',
+        handler: userController.list,
+        config: {
+            description: 'Get the user list',
+            notes: 'Get users',
+            tags:['api']
+        }
+    });
+
     
 }
