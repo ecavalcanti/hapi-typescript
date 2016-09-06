@@ -17,7 +17,7 @@ export default class UserController extends BaseController {
     }
 
     list(request: Request, reply: IReply) {
-        reply("teste");
+
     }
 
     read(request: Request, reply: IReply) {
