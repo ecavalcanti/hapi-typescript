@@ -1,5 +1,5 @@
 import {Server, Request, IReply} from 'hapi';
-import BaseController from './common/BaseController';
+import BaseController from './common/baseController';
 
 
 export default class UserController extends BaseController {
